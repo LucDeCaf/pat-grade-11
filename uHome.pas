@@ -11,15 +11,18 @@ uses
 type
   TfrmHome = class(TForm)
     lblSLC: TLabel;
-    imgLogo: TImage;
-    lblWelcome: TLabel;
     flwLoginOrSignup: TFlowLayout;
     brk1: TFlowLayoutBreak;
     cbnLogin: TCornerButton;
-    btnRegister: TButton;
     layMessage: TLayout;
+    layAbout: TLayout;
+    lblAboutUs: TLabel;
+    cbnRegister: TCornerButton;
+    imgBG: TImage;
     procedure cbnLoginClick(Sender: TObject);
     procedure btnRegisterClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure LoadBackground;
   private
     { Private declarations }
   public
@@ -40,7 +43,31 @@ end;
 
 procedure TfrmHome.cbnLoginClick(Sender: TObject);
 begin
-  ShowMessage('No app means no accounts exist yet, liar');
+  ShowMessage('Nah im working on it');
+end;
+
+procedure TfrmHome.FormCreate(Sender: TObject);
+begin
+  LoadBackground;
+end;
+
+procedure TfrmHome.LoadBackground;
+var
+  iLargest: Integer;
+begin
+  if frmHome.Width > frmHome.Height then
+    iLargest := frmHome.Width
+  else
+    iLargest := frmHome.Height;
+
+  imgBG.Bitmap.LoadFromFile('..\..\assets\Bodybuilder.jpg');
+  imgBG.WrapMode := TImageWrapMode.Fit;
+  imgBG.Opacity := 0.2;
+
+  imgBG.Width := iLargest;
+  imgBG.Height := iLargest;
+  imgBG.Position.X := -(frmHome.Width div 2);
+  imgBG.Position.Y := 0;
 end;
 
 end.
