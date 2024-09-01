@@ -135,9 +135,17 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="uConfig.pas"/>
         <DCCReference Include="uRegister.pas">
             <Form>frmRegister</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="uLogin.pas">
+            <Form>frmLogin</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="uGlobal.pas"/>
+        <DCCReference Include="uMain.pas">
+            <Form>frmMain</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">
