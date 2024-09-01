@@ -1,0 +1,171 @@
+object frmRegister: TfrmRegister
+  Left = 0
+  Top = 0
+  Caption = 'Register for SLC'
+  ClientHeight = 540
+  ClientWidth = 300
+  Fill.Color = claBlack
+  Fill.Kind = Solid
+  Padding.Left = 16.000000000000000000
+  Padding.Top = 16.000000000000000000
+  Padding.Right = 16.000000000000000000
+  Padding.Bottom = 16.000000000000000000
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object imgBG: TImage
+    MultiResBitmap = <
+      item
+      end>
+    Position.X = 128.000000000000000000
+    Position.Y = 248.000000000000000000
+  end
+  object layMessage: TLayout
+    Align = Top
+    Position.X = 16.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 268.000000000000000000
+    Size.Height = 93.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object lblSLC: TLabel
+      Align = Bottom
+      StyledSettings = []
+      Position.Y = 53.000000000000000000
+      Size.Width = 268.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Calibri'
+      TextSettings.Font.Size = 28.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claWhite
+      TextSettings.HorzAlign = Center
+      Text = 'social lifting club.'
+      TabOrder = 0
+    end
+  end
+  object flwForm: TFlowLayout
+    Align = Center
+    Size.Width = 217.000000000000000000
+    Size.Height = 199.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Justify = Center
+    JustifyLastLine = Center
+    FlowDirection = LeftToRight
+    object lblUsername: TLabel
+      StyledSettings = [Style]
+      Position.X = 18.500000000000000000
+      Size.Width = 180.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.FontColor = claWhite
+      Text = 'Username'
+      TabOrder = 3
+    end
+    object edtUsername: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 0
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 16.000000000000000000
+      Position.X = 18.500000000000000000
+      Position.Y = 30.000000000000000000
+      Size.Width = 180.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      StyledSettings = [Style, FontColor]
+    end
+    object lblPassword: TLabel
+      StyledSettings = [Style]
+      Position.X = 18.500000000000000000
+      Position.Y = 60.000000000000000000
+      Size.Width = 180.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.FontColor = claWhite
+      Text = 'Password'
+      TabOrder = 5
+    end
+    object edtPassword: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 1
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 16.000000000000000000
+      Position.X = 18.500000000000000000
+      Position.Y = 90.000000000000000000
+      Size.Width = 180.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      StyledSettings = [Style, FontColor]
+    end
+    object lblReenterPassword: TLabel
+      StyledSettings = [Style]
+      Position.X = 18.500000000000000000
+      Position.Y = 120.000000000000000000
+      Size.Width = 180.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.FontColor = claWhite
+      Text = 'Re-enter Password'
+      TabOrder = 4
+    end
+    object edtReenterPassword: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 2
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 16.000000000000000000
+      Position.X = 18.500000000000000000
+      Position.Y = 150.000000000000000000
+      Size.Width = 180.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      StyledSettings = [Style, FontColor]
+    end
+  end
+  object layRegister: TLayout
+    Align = Bottom
+    Position.X = 16.000000000000000000
+    Position.Y = 464.000000000000000000
+    Size.Width = 268.000000000000000000
+    Size.Height = 60.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object btnRegister: TButton
+      Align = Center
+      StyledSettings = [FontColor]
+      Size.Width = 150.000000000000000000
+      Size.Height = 35.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'Register'
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.Trimming = None
+      OnClick = btnRegisterClick
+    end
+  end
+  object btnBack: TButton
+    StyledSettings = [FontColor]
+    Position.X = 20.000000000000000000
+    Position.Y = 20.000000000000000000
+    Size.Width = 32.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = '<'
+    TextSettings.Font.Family = 'Roboto'
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.Trimming = None
+    OnClick = btnBackClick
+  end
+end

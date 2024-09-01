@@ -130,6 +130,16 @@
             <Form>frmHome</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="dmDB.pas">
+            <Form>dmMain</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="uConfig.pas"/>
+        <DCCReference Include="uRegister.pas">
+            <Form>frmRegister</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

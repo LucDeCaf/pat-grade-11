@@ -6,7 +6,8 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes,
   System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
-  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Objects, FMX.Colors, FMX.Layouts;
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Objects, FMX.Colors, FMX.Layouts,
+  Data.DB, Datasnap.Provider, Data.Win.ADODB, uRegister, uLogin, uGlobal, uMain;
 
 type
   TfrmHome = class(TForm)
@@ -22,11 +23,10 @@ type
     procedure cbnLoginClick(Sender: TObject);
     procedure btnRegisterClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure LoadBackground;
   private
     { Private declarations }
-  public
-    { Public declarations }
+  public const
+    clFormBackground: TAlphaColor = $FF0C0C12;
   end;
 
 var
@@ -38,36 +38,39 @@ implementation
 
 procedure TfrmHome.btnRegisterClick(Sender: TObject);
 begin
-  ShowMessage('No registering yet, im lazy');
+  frmHome.Hide;
+  frmRegister.ShowModal;
+  frmHome.Show;
 end;
 
 procedure TfrmHome.cbnLoginClick(Sender: TObject);
+var
+  result: TModalResult;
 begin
-  ShowMessage('Nah im working on it');
+  frmHome.Hide;
+  frmLogin.ModalResult := mrNone;
+
+  if frmLogin.ShowModal = mrOk then
+  begin
+    frmMain.ShowModal;
+  end;
+
+  frmHome.Show;
+end;
+
+procedure EnsureDir(path: String);
+begin
+  if not DirectoryExists(path) then
+  begin
+    CreateDir(path);
+  end;
 end;
 
 procedure TfrmHome.FormCreate(Sender: TObject);
 begin
-  LoadBackground;
-end;
-
-procedure TfrmHome.LoadBackground;
-var
-  iLargest: Integer;
-begin
-  if frmHome.Width > frmHome.Height then
-    iLargest := frmHome.Width
-  else
-    iLargest := frmHome.Height;
-
-  imgBG.Bitmap.LoadFromFile('..\..\assets\Bodybuilder.jpg');
-  imgBG.WrapMode := TImageWrapMode.Fit;
-  imgBG.Opacity := 0.2;
-
-  imgBG.Width := iLargest;
-  imgBG.Height := iLargest;
-  imgBG.Position.X := -(frmHome.Width div 2);
-  imgBG.Position.Y := 0;
+  EnsureDir('data');
+  EnsureDir('data/workout_plans');
+  LoadBackground(frmHome.width, frmHome.height, frmHome.imgBG);
 end;
 
 end.

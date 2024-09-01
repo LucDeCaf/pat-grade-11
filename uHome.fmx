@@ -2,9 +2,9 @@ object frmHome: TfrmHome
   Left = 0
   Top = 0
   Caption = 'social lifting club.'
-  ClientHeight = 536
-  ClientWidth = 296
-  Fill.Color = xFF0C0C12
+  ClientHeight = 540
+  ClientWidth = 300
+  Fill.Color = claBlack
   Fill.Kind = Solid
   Padding.Left = 16.000000000000000000
   Padding.Top = 16.000000000000000000
@@ -81,7 +81,7 @@ object frmHome: TfrmHome
     Align = Top
     Position.X = 16.000000000000000000
     Position.Y = 16.000000000000000000
-    Size.Width = 264.000000000000000000
+    Size.Width = 268.000000000000000000
     Size.Height = 93.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
@@ -89,7 +89,7 @@ object frmHome: TfrmHome
       Align = Bottom
       StyledSettings = []
       Position.Y = 53.000000000000000000
-      Size.Width = 264.000000000000000000
+      Size.Width = 268.000000000000000000
       Size.Height = 40.000000000000000000
       Size.PlatformDefault = False
       TextSettings.Font.Family = 'Calibri'
@@ -104,8 +104,8 @@ object frmHome: TfrmHome
   object layAbout: TLayout
     Align = Bottom
     Position.X = 16.000000000000000000
-    Position.Y = 470.000000000000000000
-    Size.Width = 264.000000000000000000
+    Position.Y = 474.000000000000000000
+    Size.Width = 268.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2

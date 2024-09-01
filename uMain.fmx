@@ -1,0 +1,76 @@
+object frmMain: TfrmMain
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 540
+  ClientWidth = 300
+  Fill.Color = claBlack
+  Fill.Kind = Solid
+  Padding.Left = 16.000000000000000000
+  Padding.Top = 16.000000000000000000
+  Padding.Right = 16.000000000000000000
+  Padding.Bottom = 16.000000000000000000
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object imgBG: TImage
+    MultiResBitmap = <
+      item
+      end>
+    Position.X = 128.000000000000000000
+    Position.Y = 248.000000000000000000
+  end
+  object btnBack: TButton
+    StyledSettings = [FontColor]
+    Position.X = 20.000000000000000000
+    Position.Y = 20.000000000000000000
+    Size.Width = 32.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = '<'
+    TextSettings.Font.Family = 'Roboto'
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.Trimming = None
+    OnClick = btnBackClick
+  end
+  object layMessage: TLayout
+    Align = Top
+    Position.X = 16.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 268.000000000000000000
+    Size.Height = 93.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object lblSLC: TLabel
+      Align = Bottom
+      StyledSettings = []
+      Position.Y = 53.000000000000000000
+      Size.Width = 268.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Calibri'
+      TextSettings.Font.Size = 28.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claWhite
+      TextSettings.HorzAlign = Center
+      Text = 'social lifting club.'
+      TabOrder = 0
+    end
+  end
+  object lstFeed: TListView
+    ItemAppearanceClassName = 'TListItemAppearance'
+    ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    Align = Center
+    Size.Width = 250.000000000000000000
+    Size.Height = 320.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+  end
+end
