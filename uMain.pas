@@ -9,7 +9,7 @@ uses
   FMX.Layouts, FMX.Controls.Presentation, FMX.Objects, uGlobal, dmDB,
   Data.Win.ADODB, Data.DB,
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
-  FMX.ListView;
+  FMX.ListView, uEditWorkout;
 
 type
   TfrmMain = class(TForm)
@@ -19,6 +19,7 @@ type
     imgBG: TImage;
     lstFeed: TListView;
     lblWorkout: TLabel;
+    btnNewWorkout: TButton;
     procedure btnBackClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure lstFeedItemClick(const Sender: TObject;
@@ -47,6 +48,7 @@ procedure TfrmMain.FormActivate(Sender: TObject);
 var
   i: Integer;
   item: TListViewItem;
+  PSetGroups: PSetGroupArray;
 begin
   arrWorkouts := dmMain.GetAllWorkouts;
 
@@ -63,19 +65,31 @@ begin
     item.Data['Title'] := arrWorkouts[i].Title;
     item.Data['Description'] := arrWorkouts[i].Description;
     item.Data['Timestamp'] := arrWorkouts[i].Timestamp;
-    item.Data['PSetGroups'] := @arrWorkouts[i].SetGroups;
+    // Suck it compiler, safe code is for nerds
+    item.Data['SetGroups'] := NativeInt(@arrWorkouts[i].SetGroups);
   end;
 end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
-  LoadBackground(frmMain.width, frmMain.height, frmMain.imgBG);
+  LoadBackground(width, height, imgBG);
 end;
 
 procedure TfrmMain.lstFeedItemClick(const Sender: TObject;
   const AItem: TListViewItem);
 begin
-  ShowMessage('you clicked ' + AItem.Text);
+  frmEditWorkout.workout.ID := AItem.Data['ID'].AsInteger;
+  frmEditWorkout.workout.Title := AItem.Data['Title'].AsString;
+  frmEditWorkout.workout.Description := AItem.Data['Description'].AsString;
+  frmEditWorkout.workout.OwnerUsername := AItem.Data['OwnerUsername'].AsString;
+  frmEditWorkout.workout.Timestamp := AItem.Data['Timestamp'].AsType<TDateTime>;
+  // I love unchecked int to pointer casting and dereferencing :)
+  frmEditWorkout.workout.SetGroups :=
+    PSetGroupArray(AItem.Data['SetGroups'].AsType<NativeInt>)^; // Chef's kiss
+
+  frmMain.Hide;
+  frmEditWorkout.ShowModal;
+  frmMain.Show;
 end;
 
 end.

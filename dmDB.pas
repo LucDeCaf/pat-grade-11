@@ -21,6 +21,7 @@ type
     function HashPassword(password, salt: string): string;
     procedure DataModuleCreate(Sender: TObject);
     function GetAllWorkouts: TWorkoutArray;
+    procedure SaveWorkout(workout: TWorkout);
   private
     { Private declarations }
   public
@@ -87,14 +88,14 @@ begin
   tblWorkout.First;
   for i := 0 to tblWorkout.RecordCount - 1 do
   begin
-    workout.Id := tblWorkout['ID'];
+    workout.ID := tblWorkout['ID'];
     workout.OwnerUsername := tblWorkout['UserUsername'];
     workout.Title := tblWorkout['Title'];
     workout.Description := tblWorkout['Description'];
     workout.Timestamp := tblWorkout['Timestamp'];
 
     tblSetGroup.filtered := false;
-    tblSetGroup.filter := 'WorkoutID = ' + workout.Id.ToString;
+    tblSetGroup.filter := 'WorkoutID = ' + workout.ID.ToString;
     tblSetGroup.filtered := true;
     tblSetGroup.IndexFieldNames := 'Index';
 
@@ -105,11 +106,11 @@ begin
     tblSetGroup.First;
     for j := 0 to tblSetGroup.RecordCount - 1 do
     begin
-      setGroup.Id := tblSetGroup['ID'];
+      setGroup.ID := tblSetGroup['ID'];
       setGroup.ExerciseName := tblSetGroup['ExerciseName'];
 
       tblSet.filtered := false;
-      tblSet.filter := 'SetGroupID = ' + setGroup.Id.ToString;
+      tblSet.filter := 'SetGroupID = ' + setGroup.ID.ToString;
       tblSet.filtered := true;
       tblSet.IndexFieldNames := 'Index';
 
@@ -136,6 +137,109 @@ begin
     result[i] := workout;
 
     tblWorkout.Next;
+  end;
+end;
+
+procedure TdmMain.SaveWorkout(workout: TWorkout);
+var
+  bExists: Boolean;
+  i, j: Integer;
+  setGroup: TSetGroup;
+begin
+  i := 0;
+
+  if tblWorkout.Locate('ID', workout.ID, [loCaseInsensitive]) then
+  begin
+    tblWorkout.Edit;
+    tblWorkout['ID'] := workout.ID;
+  end
+  else
+  begin
+    tblWorkout.Append;
+  end;
+
+  tblWorkout['Title'] := workout.Title;
+  tblWorkout['Description'] := workout.Description;
+  tblWorkout['UserUsername'] := workout.OwnerUsername;
+  tblWorkout['Timestamp'] := workout.Timestamp;
+  tblWorkout.Post;
+  workout.ID := tblWorkout['ID'];
+
+  tblSetGroup.filter := 'WorkoutID = ' + workout.ID.ToString;
+  tblSetGroup.IndexFieldNames := 'Index';
+  tblSetGroup.filtered := true;
+  tblSetGroup.First;
+
+  while (not tblSetGroup.Eof) and (i < length(workout.SetGroups)) do
+  begin
+    tblSetGroup.Edit;
+    tblSetGroup['Index'] := i;
+    tblSetGroup['ExerciseName'] := workout.SetGroups[i].ExerciseName;
+    tblSetGroup.Post;
+    workout.SetGroups[i].ID := tblSetGroup['ID'];
+
+    Inc(i);
+    tblSetGroup.Next;
+  end;
+
+  while not tblSetGroup.Eof do
+  begin
+    tblSetGroup.Delete;
+    tblSetGroup.Next;
+  end;
+
+  for i := i to length(workout.SetGroups) - 1 do
+  begin
+    tblSetGroup.Append;
+    tblSetGroup['WorkoutID'] := workout.ID;
+    tblSetGroup['Index'] := i;
+    tblSetGroup['ExerciseName'] := workout.SetGroups[i].ExerciseName;
+    tblSetGroup.Post;
+    workout.SetGroups[i].ID := tblSetGroup['ID'];
+  end;
+
+  for i := 0 to length(workout.SetGroups) - 1 do
+  begin
+    j := 0;
+    setGroup := workout.SetGroups[i];
+
+    tblSet.filter := 'SetGroupID = ' + setGroup.ID.ToString;
+    tblSet.filtered := true;
+    tblSet.First;
+
+    while (not tblSet.Eof) and (j < length(setGroup.Sets)) do
+    begin
+      tblSet.Edit;
+      tblSet['Index'] := j;
+      tblSet['Weight'] := setGroup.Sets[j].Weight;
+      tblSet['Reps'] := setGroup.Sets[j].Reps;
+      tblSet.Post;
+      showmessage('existing');
+
+      Inc(j);
+      tblSet.Next;
+    end;
+
+    while not tblSet.Eof do
+    begin
+      showmessage('too many');
+      tblSet.Delete;
+      tblSet.Next;
+    end;
+
+    while j < length(setGroup.Sets) do
+    begin
+      tblSet.Append;
+      tblSet['SetGroupID'] := setGroup.ID;
+      tblSet['Index'] := j;
+      tblSet['Weight'] := setGroup.Sets[j].Weight;
+      tblSet['Reps'] := setGroup.Sets[j].Reps;
+      tblSet.Post;
+
+      showmessage('create new');
+
+      Inc(j);
+    end;
   end;
 end;
 

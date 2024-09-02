@@ -71,7 +71,7 @@ object frmMain: TfrmMain
     Position.X = 16.000000000000000000
     Position.Y = 161.000000000000000000
     Size.Width = 268.000000000000000000
-    Size.Height = 344.000000000000000000
+    Size.Height = 304.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 5
     StyleLookup = 'lstFeedStyle1'
@@ -92,5 +92,20 @@ object frmMain: TfrmMain
     TextSettings.HorzAlign = Center
     Text = 'Recent Workouts'
     TabOrder = 6
+  end
+  object btnNewWorkout: TButton
+    Align = Bottom
+    StyledSettings = [FontColor]
+    Position.X = 16.000000000000000000
+    Position.Y = 484.000000000000000000
+    Size.Width = 268.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    Text = 'New Workout'
+    TextSettings.Font.Family = 'Roboto'
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.Trimming = None
   end
 end

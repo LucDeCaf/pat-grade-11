@@ -8,7 +8,8 @@ uses
   uRegister in 'uRegister.pas' {frmRegister},
   uLogin in 'uLogin.pas' {frmLogin},
   uGlobal in 'uGlobal.pas',
-  uMain in 'uMain.pas' {frmMain};
+  uMain in 'uMain.pas' {frmMain},
+  uEditWorkout in 'uEditWorkout.pas' {frmEditWorkout};
 
 {$R *.res}
 
@@ -19,5 +20,6 @@ begin
   Application.CreateForm(TfrmRegister, frmRegister);
   Application.CreateForm(TfrmLogin, frmLogin);
   Application.CreateForm(TfrmMain, frmMain);
+  Application.CreateForm(TfrmEditWorkout, frmEditWorkout);
   Application.Run;
 end.
