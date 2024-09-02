@@ -1,4 +1,5 @@
 object dmMain: TdmMain
+  OnCreate = DataModuleCreate
   Height = 750
   Width = 1000
   PixelsPerInch = 120
@@ -21,6 +22,45 @@ object dmMain: TdmMain
   object dsUser: TDataSource
     DataSet = tblUser
     Left = 80
+    Top = 80
+  end
+  object tblWorkout: TADOTable
+    Active = True
+    Connection = conDB
+    CursorType = ctStatic
+    TableDirect = True
+    TableName = 'Workout'
+    Left = 160
+  end
+  object dsWorkout: TDataSource
+    DataSet = tblWorkout
+    Left = 160
+    Top = 80
+  end
+  object dbSet: TDataSource
+    DataSet = tblSet
+    Left = 320
+    Top = 80
+  end
+  object tblSet: TADOTable
+    Active = True
+    Connection = conDB
+    CursorType = ctStatic
+    TableDirect = True
+    TableName = 'Set'
+    Left = 320
+  end
+  object tblSetGroup: TADOTable
+    Active = True
+    Connection = conDB
+    CursorType = ctStatic
+    TableDirect = True
+    TableName = 'SetGroup'
+    Left = 240
+  end
+  object dsSetGroup: TDataSource
+    DataSet = tblSetGroup
+    Left = 240
     Top = 80
   end
 end

@@ -1,7 +1,7 @@
 object frmLogin: TfrmLogin
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'Login'
   ClientHeight = 540
   ClientWidth = 300
   Fill.Color = claBlack
@@ -53,7 +53,7 @@ object frmLogin: TfrmLogin
     Size.Width = 32.000000000000000000
     Size.Height = 32.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 4
+    TabOrder = 6
     Text = '<'
     TextSettings.Font.Family = 'Roboto'
     TextSettings.Font.Size = 16.000000000000000000
@@ -66,7 +66,7 @@ object frmLogin: TfrmLogin
     Size.Width = 217.000000000000000000
     Size.Height = 158.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 2
+    TabOrder = 4
     Justify = Center
     JustifyLastLine = Center
     FlowDirection = LeftToRight

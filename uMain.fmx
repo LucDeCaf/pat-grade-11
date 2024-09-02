@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'social lifting club'
   ClientHeight = 540
   ClientWidth = 300
   Fill.Color = claBlack
@@ -30,7 +30,7 @@ object frmMain: TfrmMain
     Size.Width = 32.000000000000000000
     Size.Height = 32.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 3
+    TabOrder = 8
     Text = '<'
     TextSettings.Font.Family = 'Roboto'
     TextSettings.Font.Size = 16.000000000000000000
@@ -67,10 +67,30 @@ object frmMain: TfrmMain
     ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
     HeaderAppearanceClassName = 'TListHeaderObjects'
     FooterAppearanceClassName = 'TListHeaderObjects'
-    Align = Center
-    Size.Width = 250.000000000000000000
-    Size.Height = 320.000000000000000000
+    Align = Top
+    Position.X = 16.000000000000000000
+    Position.Y = 161.000000000000000000
+    Size.Width = 268.000000000000000000
+    Size.Height = 344.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 5
+    StyleLookup = 'lstFeedStyle1'
+    CanSwipeDelete = False
+    OnItemClick = lstFeedItemClick
+  end
+  object lblWorkout: TLabel
+    Align = Top
+    StyledSettings = [Style]
+    Position.X = 16.000000000000000000
+    Position.Y = 109.000000000000000000
+    Size.Width = 268.000000000000000000
+    Size.Height = 52.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Family = 'Calibri'
+    TextSettings.Font.Size = 24.000000000000000000
+    TextSettings.FontColor = claWhite
+    TextSettings.HorzAlign = Center
+    Text = 'Recent Workouts'
+    TabOrder = 6
   end
 end

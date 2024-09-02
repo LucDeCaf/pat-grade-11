@@ -77,7 +77,7 @@ begin
     tblUser.Insert;
     tblUser['Username'] := sUsername;
     tblUser['Role'] := 'user';
-    tblUser['Password Hash'] := sHash;
+    tblUser['PasswordHash'] := sHash;
     tblUser['Salt'] := sSalt;
     tblUser['Suspended'] := False;
     tblUser.Post;

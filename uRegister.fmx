@@ -1,7 +1,7 @@
 object frmRegister: TfrmRegister
   Left = 0
   Top = 0
-  Caption = 'Register for SLC'
+  Caption = 'Register'
   ClientHeight = 540
   ClientWidth = 300
   Fill.Color = claBlack

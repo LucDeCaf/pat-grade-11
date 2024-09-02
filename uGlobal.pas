@@ -5,22 +5,48 @@ interface
 uses FMX.Objects;
 
 type
+  TSet = record
+    Weight: Double;
+    Reps: Integer;
+  end;
+
+  TSetArray = array of TSet;
+
+  TSetGroup = record
+    ID: Integer;
+    ExerciseName: String;
+    Sets: TSetArray;
+  end;
+
+  TSetGroupArray = array of TSetGroup;
+
   TUser = record
     Username: String;
     Role: String;
     Suspended: Boolean;
   end;
 
-procedure LoadBackground(width, height: integer; imgBG: TImage);
+  TWorkout = record
+    ID: Integer;
+    OwnerUsername: String;
+    Title: String;
+    Description: String;
+    Timestamp: TDateTime;
+    SetGroups: TSetGroupArray;
+  end;
+
+  TWorkoutArray = array of TWorkout;
+
+procedure LoadBackground(width, height: Integer; imgBG: TImage);
 
 var
   activeUser: TUser;
 
 implementation
 
-procedure LoadBackground(width, height: integer; imgBG: TImage);
+procedure LoadBackground(width, height: Integer; imgBG: TImage);
 var
-  iLargest: integer;
+  iLargest: Integer;
 begin
   if width > height then
     iLargest := width

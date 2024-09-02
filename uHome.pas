@@ -7,7 +7,8 @@ uses
   System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Objects, FMX.Colors, FMX.Layouts,
-  Data.DB, Datasnap.Provider, Data.Win.ADODB, uRegister, uLogin, uGlobal, uMain;
+  Data.DB, Datasnap.Provider, Data.Win.ADODB, uRegister, uLogin, uGlobal, uMain,
+  dmDB;
 
 type
   TfrmHome = class(TForm)

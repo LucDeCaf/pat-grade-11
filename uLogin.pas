@@ -60,7 +60,7 @@ begin
       Exit;
     end;
 
-    if hashpassword(sPassword, tbluser['Salt']) <> tbluser['Password Hash'] then
+    if hashpassword(sPassword, tbluser['Salt']) <> tbluser['PasswordHash'] then
     begin
       ShowMessage('Incorrect username or password.');
       Exit;
