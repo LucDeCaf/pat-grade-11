@@ -9,7 +9,8 @@ uses
   uLogin in 'uLogin.pas' {frmLogin},
   uGlobal in 'uGlobal.pas',
   uMain in 'uMain.pas' {frmMain},
-  uEditWorkout in 'uEditWorkout.pas' {frmEditWorkout};
+  uEditWorkout in 'uEditWorkout.pas' {frmEditWorkout},
+  uEditSet in 'uEditSet.pas' {frmEditSet};
 
 {$R *.res}
 
@@ -21,5 +22,6 @@ begin
   Application.CreateForm(TfrmLogin, frmLogin);
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TfrmEditWorkout, frmEditWorkout);
+  Application.CreateForm(TfrmEditSet, frmEditSet);
   Application.Run;
 end.

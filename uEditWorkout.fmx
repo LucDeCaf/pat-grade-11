@@ -20,6 +20,9 @@ object frmEditWorkout: TfrmEditWorkout
     MultiResBitmap = <
       item
       end>
+    Size.Width = 50.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
   end
   object scroll: TVertScrollBox
     Locked = True
@@ -35,6 +38,7 @@ object frmEditWorkout: TfrmEditWorkout
     Viewport.Height = 540.000000000000000000
     object flwMetadata: TFlowLayout
       Align = Top
+      Margins.Bottom = 16.000000000000000000
       Position.X = 16.000000000000000000
       Position.Y = 64.000000000000000000
       Size.Width = 268.000000000000000000
@@ -79,6 +83,7 @@ object frmEditWorkout: TfrmEditWorkout
           Size.Height = 30.000000000000000000
           Size.PlatformDefault = False
           StyledSettings = [Style, FontColor]
+          OnChange = edtTitleChange
         end
       end
       object flwDescription: TFlowLayout
@@ -116,6 +121,7 @@ object frmEditWorkout: TfrmEditWorkout
           Size.Height = 30.000000000000000000
           Size.PlatformDefault = False
           StyledSettings = [Style, FontColor]
+          OnChange = edtDescriptionChange
         end
       end
       object flwDateTime: TFlowLayout
@@ -142,7 +148,8 @@ object frmEditWorkout: TfrmEditWorkout
         end
         object dedDate: TDateEdit
           Date = 45537.000000000000000000
-          Position.X = 118.000000000000000000
+          OnChange = dedDateChange
+          Position.X = 85.111114501953130000
           Size.Width = 150.000000000000000000
           Size.Height = 30.000000000000000000
           Size.PlatformDefault = False
@@ -176,19 +183,38 @@ object frmEditWorkout: TfrmEditWorkout
         OnClick = btnBackClick
       end
     end
-    object flwSetGroups: TFlowLayout
+    object cbnAddExercise: TCornerButton
+      Align = Bottom
+      StyledSettings = [FontColor]
+      Position.X = 16.000000000000000000
+      Position.Y = 479.000000000000000000
+      Sides = [Top, Left, Bottom, Right]
+      Size.Width = 268.000000000000000000
+      Size.Height = 45.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Add Exercise'
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 18.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.Trimming = None
+      XRadius = 8.000000000000000000
+      YRadius = 8.000000000000000000
+      OnClick = cbnAddExerciseClick
+    end
+    object lstSetGroups: TListView
+      ItemAppearanceClassName = 'TListItemAppearance'
+      ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+      HeaderAppearanceClassName = 'TListHeaderObjects'
+      FooterAppearanceClassName = 'TListHeaderObjects'
       Align = Top
-      Margins.Top = 16.000000000000000000
       Position.X = 16.000000000000000000
       Position.Y = 202.000000000000000000
       Size.Width = 268.000000000000000000
-      Size.Height = 50.000000000000000000
+      Size.Height = 263.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 2
-      Justify = Left
-      JustifyLastLine = Left
-      FlowDirection = LeftToRight
-      VerticalGap = 16.000000000000000000
+      TabOrder = 3
+      OnItemClick = lstSetGroupsItemClick
     end
   end
 end

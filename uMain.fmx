@@ -30,7 +30,7 @@ object frmMain: TfrmMain
     Size.Width = 32.000000000000000000
     Size.Height = 32.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 8
+    TabOrder = 11
     Text = '<'
     TextSettings.Font.Family = 'Roboto'
     TextSettings.Font.Size = 16.000000000000000000
@@ -107,5 +107,6 @@ object frmMain: TfrmMain
     TextSettings.Font.Size = 16.000000000000000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     TextSettings.Trimming = None
+    OnClick = btnNewWorkoutClick
   end
 end

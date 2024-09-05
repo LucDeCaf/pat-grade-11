@@ -19,6 +19,7 @@ type
   end;
 
   TSetGroupArray = array of TSetGroup;
+
   PSetGroupArray = ^TSetGroupArray;
 
   TUser = record

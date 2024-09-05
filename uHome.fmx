@@ -1,7 +1,7 @@
 object frmHome: TfrmHome
   Left = 0
   Top = 0
-  Caption = 'social lifting club.'
+  Caption = 'social lifting club'
   ClientHeight = 540
   ClientWidth = 300
   Fill.Color = claBlack

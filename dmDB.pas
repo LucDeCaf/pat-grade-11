@@ -21,7 +21,7 @@ type
     function HashPassword(password, salt: string): string;
     procedure DataModuleCreate(Sender: TObject);
     function GetAllWorkouts: TWorkoutArray;
-    procedure SaveWorkout(workout: TWorkout);
+    function SaveWorkout(workout: TWorkout): TWorkout;
   private
     { Private declarations }
   public
@@ -140,7 +140,7 @@ begin
   end;
 end;
 
-procedure TdmMain.SaveWorkout(workout: TWorkout);
+function TdmMain.SaveWorkout(workout: TWorkout): TWorkout;
 var
   bExists: Boolean;
   i, j: Integer;
@@ -148,10 +148,9 @@ var
 begin
   i := 0;
 
-  if tblWorkout.Locate('ID', workout.ID, [loCaseInsensitive]) then
+  if tblWorkout.Locate('ID', workout.ID, []) then
   begin
     tblWorkout.Edit;
-    tblWorkout['ID'] := workout.ID;
   end
   else
   begin
@@ -214,7 +213,6 @@ begin
       tblSet['Weight'] := setGroup.Sets[j].Weight;
       tblSet['Reps'] := setGroup.Sets[j].Reps;
       tblSet.Post;
-      showmessage('existing');
 
       Inc(j);
       tblSet.Next;
@@ -222,7 +220,6 @@ begin
 
     while not tblSet.Eof do
     begin
-      showmessage('too many');
       tblSet.Delete;
       tblSet.Next;
     end;
@@ -236,11 +233,11 @@ begin
       tblSet['Reps'] := setGroup.Sets[j].Reps;
       tblSet.Post;
 
-      showmessage('create new');
-
       Inc(j);
     end;
   end;
+
+  result := workout;
 end;
 
 end.

@@ -25,6 +25,7 @@ type
     procedure lstFeedItemClick(const Sender: TObject;
       const AItem: TListViewItem);
     procedure FormActivate(Sender: TObject);
+    procedure btnNewWorkoutClick(Sender: TObject);
   private
   var
     arrWorkouts: TWorkoutArray;
@@ -44,11 +45,28 @@ begin
   frmMain.Close;
 end;
 
+procedure TfrmMain.btnNewWorkoutClick(Sender: TObject);
+var
+  workout: TWorkout;
+begin
+  workout.ID := -1;
+  workout.Title := 'New workout';
+  workout.Description := '';
+  workout.OwnerUsername := activeuser.Username;
+  workout.Timestamp := Now;
+  SetLength(workout.SetGroups, 0);
+
+  frmEditWorkout.workout := workout;
+
+  frmMain.Hide;
+  frmEditWorkout.ShowModal;
+  frmMain.Show;
+end;
+
 procedure TfrmMain.FormActivate(Sender: TObject);
 var
   i: Integer;
   item: TListViewItem;
-  PSetGroups: PSetGroupArray;
 begin
   arrWorkouts := dmMain.GetAllWorkouts;
 

@@ -26,8 +26,8 @@ type
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
-  public const
-    clFormBackground: TAlphaColor = $FF0C0C12;
+  public
+    { Public declarations }
   end;
 
 var
