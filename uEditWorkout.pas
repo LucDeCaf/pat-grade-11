@@ -35,6 +35,7 @@ type
     imgBG: TImage;
     cbnAddExercise: TCornerButton;
     lstSetGroups: TListView;
+    btnDelete: TButton;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnBackClick(Sender: TObject);
@@ -45,6 +46,8 @@ type
     procedure edtTitleChange(Sender: TObject);
     procedure edtDescriptionChange(Sender: TObject);
     procedure dedDateChange(Sender: TObject);
+    procedure btnDeleteClick(Sender: TObject);
+    procedure HandleDeleteDialogClose(const AResult: TModalResult);
   private
     procedure AddItems;
   public
@@ -72,17 +75,44 @@ begin
   end;
 end;
 
+procedure TfrmEditWorkout.HandleDeleteDialogClose(const AResult: TModalResult);
+begin
+  if AResult = mrYes then
+  begin
+    // Only delete workout if it already exists in the db.
+    // This condition will be false if the user presses 'X'
+    // without first saving the workout at a prior time.
+    if dmDB.dmMain.tblWorkout.Locate('ID', workout.id, []) then
+    begin
+      dmDB.dmMain.DeleteWorkout(workout);
+    end;
+    Close;
+  end;
+end;
+
 procedure TfrmEditWorkout.lstSetGroupsItemClick(const Sender: TObject;
   const AItem: TListViewItem);
 var
   i: Integer;
+  iResult: Integer;
 begin
   i := AItem.data['Index'].AsInteger;
 
   frmEditSet.PSetGroup := @workout.SetGroups[i];
 
   Hide;
-  frmEditSet.ShowModal;
+
+  // Delete the set group if user picks 'yes' in delete dialog
+  if frmEditSet.ShowModal = mrYes then
+  begin
+    for i := i to length(workout.SetGroups) - 2 do
+    begin
+      workout.SetGroups[i] := workout.SetGroups[i + 1];
+    end;
+
+    SetLength(workout.SetGroups, length(workout.SetGroups) - 1);
+  end;
+
   AddItems;
   Show;
 end;
@@ -92,6 +122,13 @@ begin
   MessageDlg('Save changes to workout "' + workout.Title + '"?',
     TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo,
     TMsgDlgBtn.mbCancel], 0, TMsgDlgBtn.mbYes, HandleDialogClose);
+end;
+
+procedure TfrmEditWorkout.btnDeleteClick(Sender: TObject);
+begin
+  MessageDlg('Are you sure you want to delete workout "' + workout.Title + '"?',
+    TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo,
+    TMsgDlgBtn.mbCancel], 0, TMsgDlgBtn.mbNo, HandleDeleteDialogClose)
 end;
 
 procedure TfrmEditWorkout.cbnAddExerciseClick(Sender: TObject);

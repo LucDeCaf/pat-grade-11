@@ -149,7 +149,7 @@ object frmEditWorkout: TfrmEditWorkout
         object dedDate: TDateEdit
           Date = 45537.000000000000000000
           OnChange = dedDateChange
-          Position.X = 85.111114501953130000
+          Position.X = 118.000000000000000000
           Size.Width = 150.000000000000000000
           Size.Height = 30.000000000000000000
           Size.PlatformDefault = False
@@ -181,6 +181,20 @@ object frmEditWorkout: TfrmEditWorkout
         TextSettings.Font.StyleExt = {00070000000000000004000000}
         TextSettings.Trimming = None
         OnClick = btnBackClick
+      end
+      object btnDelete: TButton
+        Align = Right
+        StyledSettings = [Family, FontColor]
+        Position.X = 236.000000000000000000
+        Size.Width = 32.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 8
+        Text = 'X'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        TextSettings.Trimming = None
+        OnClick = btnDeleteClick
       end
     end
     object cbnAddExercise: TCornerButton

@@ -20,6 +20,7 @@ type
     btnBack: TButton;
     lstSets: TListView;
     cbnAddSet: TCornerButton;
+    btnDelete: TButton;
     procedure FormCreate(Sender: TObject);
     procedure lstSetsItemClick(const Sender: TObject;
       const AItem: TListViewItem);
@@ -28,6 +29,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure btnBackClick(Sender: TObject);
     procedure edtExerciseNameChange(Sender: TObject);
+    procedure HandleDeleteDialogClose(const AResult: TModalResult);
+    procedure btnDeleteClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,9 +45,25 @@ implementation
 
 {$R *.fmx}
 
+procedure TfrmEditSet.HandleDeleteDialogClose(const AResult: TModalResult);
+begin
+  if AResult = mrYes then
+  begin
+    frmEditSet.ModalResult := mrYes;
+    CloseModal;
+  end;
+end;
+
 procedure TfrmEditSet.btnBackClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TfrmEditSet.btnDeleteClick(Sender: TObject);
+begin
+  MessageDlg('Are you sure you want to delete this exercise?',
+    TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo,
+    TMsgDlgBtn.mbCancel], 0, TMsgDlgBtn.mbNo, HandleDeleteDialogClose);
 end;
 
 procedure TfrmEditSet.cbnAddSetClick(Sender: TObject);

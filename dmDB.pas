@@ -22,6 +22,7 @@ type
     procedure DataModuleCreate(Sender: TObject);
     function GetAllWorkouts: TWorkoutArray;
     function SaveWorkout(workout: TWorkout): TWorkout;
+    function DeleteWorkout(workout: TWorkout): TWorkout;
   private
     { Private declarations }
   public
@@ -236,6 +237,25 @@ begin
       Inc(j);
     end;
   end;
+
+  result := workout;
+end;
+
+function TdmMain.DeleteWorkout(workout: TWorkout): TWorkout;
+begin
+  if not tblWorkout.Locate('ID', workout.ID, []) then
+  begin
+    raise Exception.Create('Cannot find workout with ID ' +
+      inttostr(workout.ID));
+    Exit;
+  end;
+
+  workout.OwnerUsername := tblWorkout['UserUsername'];
+  workout.Title := tblWorkout['Title'];
+  workout.Description := tblWorkout['Description'];
+  workout.Timestamp := tblWorkout['Timestamp'];
+
+  tblWorkout.Delete;
 
   result := workout;
 end;

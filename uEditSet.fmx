@@ -29,7 +29,7 @@ object frmEditSet: TfrmEditSet
     Size.Width = 268.000000000000000000
     Size.Height = 30.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 3
+    TabOrder = 5
     object lblExerciseName: TLabel
       Align = Left
       StyledSettings = [Style]
@@ -74,6 +74,20 @@ object frmEditSet: TfrmEditSet
       TextSettings.Font.StyleExt = {00070000000000000004000000}
       TextSettings.Trimming = None
       OnClick = btnBackClick
+    end
+    object btnDelete: TButton
+      Align = Right
+      StyledSettings = [Family, FontColor]
+      Position.X = 236.000000000000000000
+      Size.Width = 32.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 8
+      Text = 'X'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.Trimming = None
+      OnClick = btnDeleteClick
     end
   end
   object lstSets: TListView
