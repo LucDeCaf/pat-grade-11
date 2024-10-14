@@ -1,0 +1,126 @@
+object frmEditSetGroup: TfrmEditSetGroup
+  Left = 0
+  Top = 0
+  Caption = 'Edit set'
+  ClientHeight = 540
+  ClientWidth = 300
+  Fill.Color = claBlack
+  Fill.Kind = Solid
+  Padding.Left = 16.000000000000000000
+  Padding.Top = 16.000000000000000000
+  Padding.Right = 16.000000000000000000
+  Padding.Bottom = 16.000000000000000000
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object imgBG: TImage
+    MultiResBitmap = <
+      item
+      end>
+  end
+  object layExerciseName: TLayout
+    Align = Top
+    Margins.Bottom = 16.000000000000000000
+    Position.X = 16.000000000000000000
+    Position.Y = 64.000000000000000000
+    Size.Width = 268.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    object lblExerciseName: TLabel
+      Align = Left
+      StyledSettings = [Style]
+      Size.Width = 100.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 18.000000000000000000
+      TextSettings.FontColor = claWhite
+      Text = 'Exercise'
+      TabOrder = 0
+    end
+    object edtExerciseName: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Right
+      TabOrder = 1
+      Position.X = 118.000000000000000000
+      Size.Width = 150.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      OnChange = edtExerciseNameChange
+    end
+  end
+  object layBack: TLayout
+    Align = MostTop
+    Margins.Bottom = 16.000000000000000000
+    Position.X = 16.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 268.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object btnBack: TButton
+      StyledSettings = [FontColor]
+      Size.Width = 32.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 7
+      Text = '<'
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.Trimming = None
+      OnClick = btnBackClick
+    end
+    object btnDelete: TButton
+      Align = Right
+      StyledSettings = [Family, FontColor]
+      Position.X = 236.000000000000000000
+      Size.Width = 32.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 8
+      Text = 'X'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.Trimming = None
+      OnClick = btnDeleteClick
+    end
+  end
+  object lstSets: TListView
+    ItemAppearanceClassName = 'TListItemAppearance'
+    ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    Align = Top
+    Position.X = 16.000000000000000000
+    Position.Y = 110.000000000000000000
+    Size.Width = 268.000000000000000000
+    Size.Height = 350.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    OnItemClick = lstSetsItemClick
+  end
+  object cbnAddSet: TCornerButton
+    Align = Bottom
+    StyledSettings = [FontColor]
+    Position.X = 16.000000000000000000
+    Position.Y = 479.000000000000000000
+    Sides = [Top, Left, Bottom, Right]
+    Size.Width = 268.000000000000000000
+    Size.Height = 45.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = 'Add Set'
+    TextSettings.Font.Family = 'Roboto'
+    TextSettings.Font.Size = 18.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.Trimming = None
+    XRadius = 8.000000000000000000
+    YRadius = 8.000000000000000000
+    OnClick = cbnAddSetClick
+  end
+end

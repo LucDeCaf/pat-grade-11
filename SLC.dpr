@@ -10,6 +10,7 @@ uses
   uGlobal in 'uGlobal.pas',
   uMain in 'uMain.pas' {frmMain},
   uEditWorkout in 'uEditWorkout.pas' {frmEditWorkout},
+  uEditSetGroup in 'uEditSetGroup.pas' {frmEditSetGroup},
   uEditSet in 'uEditSet.pas' {frmEditSet};
 
 {$R *.res}
@@ -22,6 +23,7 @@ begin
   Application.CreateForm(TfrmLogin, frmLogin);
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TfrmEditWorkout, frmEditWorkout);
+  Application.CreateForm(TfrmEditSetGroup, frmEditSetGroup);
   Application.CreateForm(TfrmEditSet, frmEditSet);
   Application.Run;
 end.

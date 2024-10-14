@@ -9,7 +9,7 @@ uses
   FMX.Controls.Presentation, FMX.StdCtrls, uGlobal, dmDB, FMX.Layouts, FMX.Edit,
   FMX.DateTimeCtrls, FMX.Objects, FMX.EditBox, FMX.NumberBox, FMX.ListBox,
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
-  FMX.ListView, uEditSet;
+  FMX.ListView, uEditSetGroup;
 
 type
   TSetGroupComponent = record
@@ -98,12 +98,12 @@ var
 begin
   i := AItem.data['Index'].AsInteger;
 
-  frmEditSet.PSetGroup := @workout.SetGroups[i];
+  frmEditSetGroup.PSetGroup := @workout.SetGroups[i];
 
   Hide;
 
   // Delete the set group if user picks 'yes' in delete dialog
-  if frmEditSet.ShowModal = mrYes then
+  if frmEditSetGroup.ShowModal = mrYes then
   begin
     for i := i to length(workout.SetGroups) - 2 do
     begin

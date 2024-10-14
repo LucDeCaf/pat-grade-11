@@ -152,6 +152,10 @@
             <Form>frmEditWorkout</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="uEditSetGroup.pas">
+            <Form>frmEditSetGroup</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <DCCReference Include="uEditSet.pas">
             <Form>frmEditSet</Form>
             <FormType>fmx</FormType>
