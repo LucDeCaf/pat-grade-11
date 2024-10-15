@@ -1,0 +1,111 @@
+object frmDataExport: TfrmDataExport
+  Left = 0
+  Top = 0
+  Caption = 'Import or export data'
+  ClientHeight = 540
+  ClientWidth = 300
+  Fill.Color = claBlack
+  Fill.Kind = Solid
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object imgBG: TImage
+    MultiResBitmap = <
+      item
+      end>
+  end
+  object btnBack: TButton
+    StyledSettings = [FontColor]
+    Position.X = 16.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 32.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 13
+    Text = '<'
+    TextSettings.Font.Family = 'Roboto'
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.Trimming = None
+    OnClick = btnBackClick
+  end
+  object flwControls: TFlowLayout
+    Align = Center
+    Size.Width = 320.000000000000000000
+    Size.Height = 103.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Justify = Center
+    JustifyLastLine = Center
+    FlowDirection = LeftToRight
+    VerticalGap = 16.000000000000000000
+    object cbnImport: TCornerButton
+      StyledSettings = [FontColor]
+      Position.X = 60.000000000000000000
+      Sides = [Top, Left, Bottom, Right]
+      Size.Width = 200.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'cornerbuttonstyle'
+      TabOrder = 2
+      Text = 'Import from file'
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 18.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.Trimming = None
+      XRadius = 10.000000000000000000
+      YRadius = 10.000000000000000000
+    end
+    object brk1: TFlowLayoutBreak
+      ChangesRules = False
+      Justify = Center
+      JustifyLastLine = Center
+      FlowDirection = LeftToRight
+    end
+    object cbnExport: TCornerButton
+      StyledSettings = [FontColor]
+      Position.X = 60.000000000000000000
+      Position.Y = 57.000000000000000000
+      Sides = [Top, Left, Bottom, Right]
+      Size.Width = 200.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'cornerbuttonstyle'
+      TabOrder = 1
+      Text = 'Export to file'
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 18.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.Trimming = None
+      XRadius = 10.000000000000000000
+      YRadius = 10.000000000000000000
+    end
+  end
+  object lblImportOrExport: TLabel
+    StyledSettings = [Family]
+    Position.Y = 113.000000000000000000
+    Size.Width = 300.000000000000000000
+    Size.Height = 56.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 18.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claWhite
+    TextSettings.HorzAlign = Center
+    Text = 'Import or Export Workout Data'
+    TabOrder = 15
+  end
+  object lblDisclaimer: TLabel
+    StyledSettings = [Family]
+    Position.Y = 424.000000000000000000
+    Size.Width = 300.000000000000000000
+    Size.Height = 56.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 14.000000000000000000
+    TextSettings.FontColor = claWhite
+    TextSettings.HorzAlign = Center
+    Text = 'Note: All existing data will be erased.'
+    TabOrder = 14
+  end
+end

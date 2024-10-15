@@ -160,6 +160,10 @@
             <Form>frmEditSet</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="uDataExport.pas">
+            <Form>frmDataExport</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

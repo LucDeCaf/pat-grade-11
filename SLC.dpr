@@ -11,7 +11,8 @@ uses
   uMain in 'uMain.pas' {frmMain},
   uEditWorkout in 'uEditWorkout.pas' {frmEditWorkout},
   uEditSetGroup in 'uEditSetGroup.pas' {frmEditSetGroup},
-  uEditSet in 'uEditSet.pas' {frmEditSet};
+  uEditSet in 'uEditSet.pas' {frmEditSet},
+  uDataExport in 'uDataExport.pas' {frmDataExport};
 
 {$R *.res}
 
@@ -25,5 +26,6 @@ begin
   Application.CreateForm(TfrmEditWorkout, frmEditWorkout);
   Application.CreateForm(TfrmEditSetGroup, frmEditSetGroup);
   Application.CreateForm(TfrmEditSet, frmEditSet);
+  Application.CreateForm(TfrmDataExport, frmDataExport);
   Application.Run;
 end.

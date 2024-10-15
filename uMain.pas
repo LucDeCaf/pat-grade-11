@@ -9,7 +9,7 @@ uses
   FMX.Layouts, FMX.Controls.Presentation, FMX.Objects, uGlobal, dmDB,
   Data.Win.ADODB, Data.DB,
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
-  FMX.ListView, uEditWorkout;
+  FMX.ListView, uEditWorkout, uDataExport;
 
 type
   TfrmMain = class(TForm)
@@ -20,12 +20,15 @@ type
     lstFeed: TListView;
     lblWorkout: TLabel;
     btnNewWorkout: TButton;
+    btnImport: TButton;
     procedure btnBackClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure lstFeedItemClick(const Sender: TObject;
       const AItem: TListViewItem);
     procedure FormActivate(Sender: TObject);
     procedure btnNewWorkoutClick(Sender: TObject);
+    procedure btnImportClick(Sender: TObject);
+    procedure LoadWorkouts;
   private
   var
     arrWorkouts: TWorkoutArray;
@@ -43,6 +46,14 @@ implementation
 procedure TfrmMain.btnBackClick(Sender: TObject);
 begin
   frmMain.Close;
+end;
+
+procedure TfrmMain.btnImportClick(Sender: TObject);
+begin
+  frmMain.Hide;
+  frmDataExport.ShowModal;
+  arrWorkouts := dmMain.GetAllWorkouts;
+  frmMain.Show;
 end;
 
 procedure TfrmMain.btnNewWorkoutClick(Sender: TObject);
@@ -69,7 +80,14 @@ var
   item: TListViewItem;
 begin
   arrWorkouts := dmMain.GetAllWorkouts;
+  LoadWorkouts;
+end;
 
+procedure TfrmMain.LoadWorkouts;
+var
+  i: Integer;
+  item: TListViewItem;
+begin
   lstFeed.items.Clear;
   for i := 0 to length(arrWorkouts) - 1 do
   begin
